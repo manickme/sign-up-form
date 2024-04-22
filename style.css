@@ -1,18 +1,17 @@
 :root {
   /* Font family */
-  --ff-sans: "Poppins", sans-serif;
-  --ff-var: "Exo 2", sans-serif;
+  /* --ff-sans: "Poppins", sans-serif; */
+  --ff-sans: "Rubik", sans-serif;
 
   /* Font weights */
   --fw-light: 200;
   --fw-normal: 400;
-  --fw-bold: 600;
 
   /* Font sizes */
   --fs-400: 0.9275rem;
   --fs-500: 1.25rem;
   --fs-600: 1.625rem;
-  --fs-900: 3.5rem;
+  --fs-900: 3.75rem;
 
   /* Colors */
   --clr-white: hsl(0 0 100 / 1);
@@ -69,8 +68,8 @@ h6 {
 
 h1 {
   color: var(--clr-white);
-  font-family: var(--ff-var);
-  font-weight: var(--fw-bold);
+  font-family: var(--ff-sans);
+  font-weight: var(--fw-normal);
   font-size: var(--fs-900);
   font-style: normal;
 }
@@ -125,6 +124,11 @@ input {
   background-color: hsl(199 23 16 / 0.8);
 }
 
+.image-logo > img {
+  color: var(--clr-white);
+  margin-right: 0.5rem;
+}
+
 .image-caption {
   position: absolute;
   width: 100%;
@@ -136,7 +140,7 @@ input {
 }
 
 .image-logo > img {
-  width: 15%;
+  width: 12.5%;
 }
 
 .form-heading {
@@ -227,7 +231,7 @@ h2:nth-of-type(3) {
 }
 
 input:focus {
-  outline: 4px solid var(--clr-blue);
+  outline: 2px solid var(--clr-blue);
 }
 
 .form-submit > button {
@@ -265,5 +269,5 @@ em {
 }
 
 .invalid {
-  outline: 4px solid var(--clr-red);
+  outline: 2px solid var(--clr-red);
 }
