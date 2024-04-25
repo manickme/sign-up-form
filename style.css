@@ -1,6 +1,5 @@
 :root {
   /* Font family */
-  /* --ff-sans: "Poppins", sans-serif; */
   --ff-sans: "Rubik", sans-serif;
 
   /* Font weights */
@@ -141,6 +140,7 @@ input {
 
 .image-logo > img {
   width: 12.5%;
+  min-width: 3.25rem;
 }
 
 .form-heading {
@@ -157,20 +157,12 @@ h2:nth-of-type(3) {
   height: 2px;
 }
 
-.wrapper > .border-gradient {
+.border-gradient {
   background: linear-gradient(to right, var(--clr-blue), var(--clr-background));
 }
 
-.wrapper > .border-gradient ~ .border-gradient {
+.border-gradient ~ .border-gradient {
   background: linear-gradient(to right, var(--clr-red), var(--clr-background));
-}
-
-.form-heading,
-.form-input,
-.form-submit {
-  padding: 2rem 2rem 2rem 3rem;
-  width: 100%;
-  flex: 1;
 }
 
 .form-heading {
@@ -183,11 +175,19 @@ h2:nth-of-type(3) {
 .form-input {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .form-submit {
   justify-content: flex-start;
+}
+
+.form-heading,
+.form-input,
+.form-submit {
+  padding: 2rem 2rem 2rem 3rem;
+  width: 100%;
+  flex: 1;
 }
 
 .form-heading,
@@ -205,29 +205,35 @@ h2:nth-of-type(3) {
   flex-direction: column;
 }
 
-.layout-grid__row {
+.form-input__row {
   display: flex;
 }
 
-.layout-grid__row :nth-child(2n) {
-  margin-right: 3.5rem;
+.form-input__row :nth-child(2n) {
+  margin-right: 4rem;
 }
 
-.layout-grid__item {
+.form-input__item {
   margin-block: 1.25rem;
+  position: relative;
 }
 
-.layout-grid__item > label {
+.form-input__item > label {
   display: block;
   font-size: var(--fs-400);
   font-weight: var(--fw-normal);
   letter-spacing: 0.1rem;
 }
 
-.layout-grid__item > input {
+input {
+  --clr-outline: #5daec5;
+  --sz-outline: 0px;
+
+  display: block;
   width: 250px;
   height: 35px;
   padding: 1rem;
+  outline: var(--clr-outline) var(--sz-outline) solid;
 }
 
 input:focus {
@@ -270,4 +276,11 @@ em {
 
 .invalid {
   outline: 2px solid var(--clr-red);
+}
+
+.error {
+  color: var(--clr-red);
+  filter: brightness(1.35);
+  position: absolute;
+  max-width: 250px;
 }
