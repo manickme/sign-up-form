@@ -10,6 +10,9 @@ const firstNameError = document.querySelector("#first-name + span.error");
 const lastNameError = document.querySelector("#last-name + span.error");
 const emailError = document.querySelector("#email + span.error");
 const passwordError = document.querySelector("#password + span.error");
+const confirmPasswordError = document.querySelector(
+  "#confirm-passowrd > span.error"
+);
 
 let submitCount = 0;
 
@@ -65,13 +68,19 @@ function showPasswordError() {
     passwordError.textContent =
       "*Password must contain at least 1 special character";
   } else if (password.value !== confirmPassword.value) {
-    passwordError.textContent = "Passwords do  not match";
+    passwordError.textContent = "Passwords do not match";
+  }
+}
+
+function showConfirmPasswordError() {
+  if (confirmPassword.value !== password.value) {
+    confirmPasswordError.textContent = "*Passwords do not match";
   }
 }
 
 firstName.addEventListener("input", () => {
   if (firstName.validity.valid) {
-    emailError.textContent = "";
+    firstNameError.textContent = "";
   } else if (submitCount > 0) {
     // Only show error after first submission attempt
     showFirstNameError();
@@ -80,7 +89,7 @@ firstName.addEventListener("input", () => {
 
 lastName.addEventListener("input", () => {
   if (lastName.validity.valid) {
-    emailError.textContent = "";
+    lastNameError.textContent = "";
   }
   if (submitCount > 0) {
     // Only show error after first submission attempt
@@ -106,6 +115,15 @@ password.addEventListener("input", () => {
   }
 });
 
+confirmPassword.addEventListener("input", () => {
+  if (confirmPassword.value === password.value) {
+    confirmPasswordError.textContent = "";
+  } else if (submitCount > 0) {
+    // Only show error after first submission attempt
+    showConfirmPasswordError();
+  }
+});
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   submitCount += 1;
@@ -122,8 +140,20 @@ form.addEventListener("submit", (event) => {
     }
   }
 
-  showFirstNameError();
-  showLastNameError();
-  showEmailError();
-  showPasswordError();
+  if (!firstName.validity.valid) {
+    showFirstNameError();
+  }
+
+  if (!lastName.validity.valid) {
+    showLastNameError();
+  }
+
+  if (!email.validity.valid) {
+    showEmailError();
+  }
+
+  if (!password.validity.valid) {
+    showPasswordError();
+    showConfirmPasswordError();
+  }
 });
