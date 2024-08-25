@@ -1,3 +1,5 @@
+function init()
+{
 const firstName = document.getElementById("first-name");
 const lastName = document.getElementById("last-name");
 const password = document.getElementById("password");
@@ -139,21 +141,39 @@ form.addEventListener("submit", (event) => {
       node.style.setProperty("--sz-outline", "0px");
     }
   }
-
+  function submitfun()
+  {
+  let confirm = true;
   if (!firstName.validity.valid) {
     showFirstNameError();
+    confirm = false
+    
   }
 
   if (!lastName.validity.valid) {
     showLastNameError();
+    confirm = false
   }
 
   if (!email.validity.valid) {
     showEmailError();
+    confirm = false
   }
 
   if (!password.validity.valid) {
     showPasswordError();
     showConfirmPasswordError();
+    confirm = false
+  }
+  return confirm
+}
+  const submit = submitfun();
+  if (submit){
+    alert('Your account has been created')
+    location.reload()
+    
+    init()    
   }
 });
+}
+init()
